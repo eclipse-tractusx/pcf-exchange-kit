@@ -131,8 +131,8 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
 ### PCF Personas
 
 Persona|Role and Task (in lager Companies)|Challenges|Catena-X Contribution|
--------|---------------------------------------------|---------------------|--
-Purchaser|In general, the purchaser will not be a sustainability expert! Sustainability is for him just an additional dimension (as cost, quality, ...). He is the central interface to the supplier and the owner of the sourcing decision process. In the PCF context this means:
+-------|:---------------------------------------------|---------------------|--
+Purchaser|In general, the purchaser will not be a sustainability expert! Sustainability is for him just an additional dimension (as cost, quality, ...). He is the central interface to the supplier and the owner of the sourcing decision process. In the PCF context this means:<ul><li>He requests sustainability data for purchased (sub)products from his suppliers.</li></ul><ul><li>In the sourcing process he evaluates the incoming offers (which will include more and more sustainability data</li></ul> 
 PCF Controller (product)|
 Sustainability Manager (product)|
 Sustainability Manager (corporate)
@@ -140,12 +140,48 @@ Salespeople|
 Auditor (external)|
 Sustainability Associations / Institutions
 
-
-
-
-
-
-
+<table>
+    <thead>
+        <tr>
+            <th>Persona</th>
+            <th>Role and Task (in larger companies)</th>
+            <th>Specifics for SME
+            <th> Challenges</th>
+            <th>Catena-X Contribution</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="vertical-align:top">
+            <td align="left"> Purchaser </td>
+            <td align="left"> In general, the purchaser will not be a sustainability expert!
+            Sustainability is for him just an additional dimension (as cost, quality, ...).
+            <ul>
+                <li>He requests sustainability data for purchased (sub)products from his suppliers.</li>
+                <li>In the sourcing process he evaluates the incoming offers (which will include more and more sustainability data).</li>
+                <li>He negotiates PCF targets with his suppliers.</li>
+                <li>He checks compliance with agreements and targets and evaluates the supplier's performance.</li>
+                <li>He will be often the one, who detects incidents (e.g., non-fulfillment of targets, missing certificates, ...).</li>
+            </ul>
+            Different responsibilities and views possible:
+            <ul>
+                <li> A part / components / materials-oriented view </li>
+                <li> A supplier / commodity-oriented view</li>
+            </ul>
+            </td>
+            <td>We assume, that a SME will have a weaker negotiating position and assertiveness (as a large company), so it may be more difficult to …
+                <ul>
+                    <li>request PCF data from (sub)suppliers.</li>
+                    <li>forward customers' CO2 targets to (sub)suppliers.</li>
+                    <li>negotiate own objectives/targets.</li>
+                </ul>
+            </td>
+            <td><p>He requires sustainability data of parts/materials (e.g., PCF)  for various purposes.</br>
+                He requires standardized data.</p>
+                <p>He also requires product-unspecific sustainability data of suppliers (e.g., production site-specific certificates).</p>
+                He needs data in different phases (e.g., product development, procurement, industrialization, series production).
+            </td>
+    </tbody>
+</table>
 
 
 ## Semantic Models
@@ -162,11 +198,10 @@ As the global community grapples with the impacts of climate change, consumers, 
 
 For this KIT only the data model PCF is used. The data model follows the Catena-X Standard [CX-0026](test) and is modeled following the [CX0003](test) Standard.
 
-
-
 #### Example Payload
 
 The following json shows a example payload for a requested pcf value.
+
 ```json
 {
     "specVersion": "2.0.1-20230314",
