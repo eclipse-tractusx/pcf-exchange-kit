@@ -179,7 +179,7 @@ The following JSON is an policy definition including the policy "frameworkagreem
     "@id": "54ef3326-42b2-4221-8c5a-3a6270d54db8",
     "edc:accessPolicyId": "a343fcbf-99fc-4ce8-8e9b-148c97605aab",
     "edc:contractPolicyId": "a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-    "edc:assetsSelector": : [
+    "edc:assetsSelector": [
         {
             "@type": "Criterion",
             "edc:operandLeft": "@id",
