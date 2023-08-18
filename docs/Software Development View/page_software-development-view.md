@@ -15,7 +15,6 @@ The following figure shows the current high level architecture of the use case p
 
 ## Sequence View
 
-
 The following chapter illustrates the process from searching for an EDC point, to querying a PCF value, and finally transmitting the requested value.
 
 ### EDC Discovery and dDTR Access
@@ -23,7 +22,6 @@ The following chapter illustrates the process from searching for an EDC point, t
 For receiving the EDC Enpoints for a requested partner the EDC Discovery Service is used following the [CX-0001](test) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more detailes the used CX Standard is linkend.
 
 ![EDCDiscoveryAndDTRAccess](../../resources/development-view/EDCDiscoveryAndDTRAccess.png)
-
 
 ### PCF Request
 
@@ -36,7 +34,7 @@ After successfully locating the EDC asset containing the PCF request endpoint, t
 
 ### PCF Update
 
-The sequence diagram provided below presents an example of a PCF update flow. An update is feasible only for assets that have been previously requested at least once, as demonstrated in [PCFRequest](##test). Proactive updates without a prior request are not achievable with the current version.
+The sequence diagram provided below presents an example of a PCF update flow. An update is feasible only for assets that have been previously requested at least once, as demonstrated in [PCFRequest](#sequence-view). Proactive updates without a prior request are not achievable with the current version.
 
 ![PCF Update](../../resources/development-view/PCFUpdate.png)
 
@@ -50,18 +48,16 @@ The sequence diagram provided below presents an example of a PCF update flow. An
 |[005] (Requesting PCF Value)|GET| /productIds|{productId}
 |006 (Sending PCF Value)| PUT| /productIds|{productId}
 
-- When responding on PCF exchange request the "requestID" is mandatory in the PUT call. 
+- When responding on PCF exchange request the "requestID" is mandatory in the PUT call.
 - When sharing a PCF update the "requestID" is NOT allowed in the PUT call.
 - The EDC asset used to receive PCF is NOT looked up through AAS, but identified by type ("data.pcf.exchangeEndpoint").
 
 ##### Payload for Requesting PCF Sub Model
 
-The following JSON shows the structure of a registered PCF submodel in the DTR. The subprotocolBody is used for asset bundling. For this, the CX Standard [CX-0002]() is to be followed.
+The following JSON shows the structure of a registered PCF submodel in the DTR. The subprotocolBody is used for asset bundling. For this, the CX Standard [CX-0002](https://catena-x.net/de/standard-library) is to be followed.
 
-The digital twin id can be searched via the `manufactureID`, `manufacturePartID` and the ``assetLifecyclePhase: "asPlanned"``
-The sub-model PCF must be registered with the ``idshort`: PCFExchangeEndpoint``.
-
-
+The digital twin id can be searched via the `manufactureID`, `manufacturePartID` and the ``assetLifecyclePhase:"asPlanned"``
+The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
 
 ```json
 {
@@ -94,7 +90,7 @@ The sub-model PCF must be registered with the ``idshort`: PCFExchangeEndpoint``.
 }
 ```
 
-#### Payloads for EDC Data Asset
+#### Payloads for EDC Asset
 
 ##### Payload for EDC Data Asset PCF
 
@@ -118,7 +114,7 @@ The follwing JSON shows the the EDC Asset for PCF defined in the EDC using the a
      
   "edc:dataAddress": {
     "edc:type": "edc:HttpData",
-    "edc:baseUrl": https://some.url/service,
+    "edc:baseUrl": "https://some.url/service",
     "edc:proxyBody": "true",
     "edc:proxyPath": "true",
     "edc:proxyQueryParams": "true",
@@ -193,31 +189,32 @@ The following JSON is an policy definition including the policy "frameworkagreem
     ]
 }
 ```
+
 For more examples how to define polcies with SSI have a look [here](https://github.com/eclipse-tractusx/ssi-docu/blob/main/docs/architecture/cx-3-2/edc/policy.definitions.md).
 
-## API definition
-
-
-
-
-
->**Note**
->Before the PCF data can be pushed back to the requester the data provider needs again to search for the EDC Endpoint of the requester following the EDC Discovery Service API!
-
-# Error Handling 
+## Error Handling
 
 As Release 3.2 only covers the "happy path" for exchange pcf data via the catena-x network. Error handling is currently not covered.
 
-# Standards
-## Used CX Standards
+## Standards
 
-* [CX-0001-EDCDiscoveryAPI]()
-* [CX-0002-DigitalTwininsInCX]()
-* [CX-0003-SAMMSemanticAspectMetaModel]()
-* [CX-006-RegistrationAndInitialOnBoarding]()
-* [CX-0018-SovereignDataExchange]()
-* [CX-0026-ProductCarbonFootprintDataModel]()
-* [CX-0028-PcfRequestAPI]()
+### Used CX Standards
+
+* [CX-0001-EDCDiscoveryAPI](https://catena-x.net/de/standard-library)
+* [CX-0002-DigitalTwininsInCX](https://catena-x.net/de/standard-library)
+* [CX-0003-SAMMSemanticAspectMetaModel](https://catena-x.net/de/standard-library)
+* [CX-0006-RegistrationAndInitialOnBoarding](https://catena-x.net/de/standard-library)
+* [CX-0013 Identity of Member Companies](https://catena-x.net/de/standard-library)
+* [CX-0014 Employees and Technical Users](https://catena-x.net/de/standard-library)
+* [CX-0015 IAM & Access Control Paradigm](https://catena-x.net/de/standard-library)
+* [CX-0016 Company Attribute Verification](https://catena-x.net/de/standard-library)
+* [CX-0017 Company Role by the Connector](https://catena-x.net/de/standard-library)
+* [CX-0018-SovereignDataExchange](https://catena-x.net/de/standard-library)
+* [CX-0026-PCF Data Model](https://catena-x.net/de/standard-library)
+* [CX-0049-DID Document Schema](NeedtobeaddedbyAccociation)
+* [CX-0050-Framework Agreement Credential](NeedtobeaddedbyAccociation)
+* [CX-0051-Summary Credential](NeedtobeaddedbyAccociation)
+* [CX-0095 Data Model Transmission Pass]((https://catena-x.net/de/standard-library))
 
 ## Other Standards
 
