@@ -166,14 +166,14 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
                 <li> A supplier / commodity-oriented view</li>
             </ul>
             </td>
-            <td>We assume, that a SME will have a weaker negotiating position and assertiveness (as a large company), so it may be more difficult to …
+            <td align="left">We assume, that a SME will have a weaker negotiating position and assertiveness (as a large company), so it may be more difficult to …
                 <ul>
                     <li>request PCF data from (sub)suppliers.</li>
                     <li>forward customers' CO2 targets to (sub)suppliers.</li>
                     <li>negotiate own objectives/targets.</li>
                 </ul>
             </td>
-            <td>He requires sustainability data of parts/materials (e.g., PCF)  for various purposes.
+            <td align="left">He requires sustainability data of parts/materials (e.g., PCF)  for various purposes.
                 <p>He requires standardized data.</p>
                 <p>He also requires product-unspecific sustainability data of suppliers (e.g., production site-specific certificates).</p>
                 He needs data in different phases (e.g., product development, procurement, industrialization, series production).
@@ -189,8 +189,8 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
                 <p>CX provides apps and services for data exchange.</p>
             </td>
         <tr style="vertical-align:top">
-            <td>PCF Calculator</td>
-            <td>He is an expert for PCF calculation. He could be described as a “PCF Engineer,”         analogous to the role of a “Cost Engineer” established in many companies.
+            <td align="left">PCF Calculator</td>
+            <td align="left">He is an expert for PCF calculation. He could be described as a “PCF Engineer,”         analogous to the role of a “Cost Engineer” established in many companies.
                 <ul>
                     <li>He has in-depth knowledge of PCF-, CCF- and LCA-methods.</li>
                     <li>He is responsible for the calculation of the own scope-1 and -2 values of a PCF</li>
@@ -200,7 +200,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
                     <li>He analyzes customer incident requests (on behalf of the PCF controller).</li>
                     <li>If there are any discrepancies in reported PCF data, he initiates incident requests at the respective supplier (via the PCF controller).</li>
                 </ul>
-            <td>We assume, that at a SME there will be often a combined role: (Sustainability) Manager Product</br>
+            <td align="left">We assume, that at a SME there will be often a combined role: (Sustainability) Manager Product</br>
                 <ul>
                     <li>He is no sustainability expert! So, he must draw on external expertise if necessary</li>
                     <li>He must handle internal and external topics</li>
@@ -220,13 +220,13 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
                     <li>He analyzes incoming incident request of customers</li>
                 </ul>
             </td>
-            <td>Requires standardized PCF calculation method.
+            <td align="left">Requires standardized PCF calculation method.
                 <p>Needs Scope 3 values from suppliers, to calculate own PCF with this data.</p>
                 <p>May need a calculation tool for Scope 1 and 2 values.</p>
                 <p>Requires access to eco-data (secondary data).</p>
                 Needs BoM (bill of material) data for calculation and analysis.
             </td>
-            <td>
+            <td align="left">
                 <p>CX defines standards for PCF calculation.</p>
                 <p>CX provides up-to-date and reliable sustainability data of parts / materials.</p>
                 <p>CX provides apps and services for data exchange.</p>
@@ -257,14 +257,14 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             </td>
             <td>
             </td>
-            <td>
+            <td align="left">
             He requires up-to-date and reliable PCF data of parts / materials.</br></br>
             He needs data in different phases of the product lifecycle (e.g., in product development, sourcing, industrialization, series production).</br></br>
             He requires standardized data.</br></br>
             He needs a tool to exchange PCF data with internal and external partners.</br></br>
             He needs reports for tracking and monitoring of PCF data and targets.
             </td>
-            <td>
+            <td align="left">
             CX defines standards for PCF data.</br></br>
             CX provides apps and services for PCF data exchange.</br></br>
             CX provides up-to-date and reliable PCF data of parts / materials</br></br>
@@ -272,7 +272,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             </td>
         </tr>
         <tr style="vertical-align:top">
-            <td>Sustainability Manager (product)</td>
+            <td align="left">Sustainability Manager (product)</td>
             <td>
             This is more of a strategic role than an operational role.</br></br>
             He is responsible for the coordination and steering of PCF and cost objectives at product level.</br></br>
@@ -285,7 +285,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             </td>
             <td>
             </td>
-            <td>
+            <td align="left">
             He collaborates with external auditors</br></br>
             He requires standardized data</br></br>
             He needs data in different phases of the product lifecycle (e.g., in product development, sourcing, industrialization, series production).</br></br>
@@ -298,7 +298,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
                     <li>Controlling of competing targets (sustainability vs. costs vs. quality …).</li>
                 </ul>
             </td>
-            <td>
+            <td align="left">
             CX defines standards for sustainability data (esp. PCF).</br></br>
             CX provides apps and services for data exchange.</br></br>
             CX provides up-to-date and reliable sustainability data of parts / materials.</br></br>
@@ -308,25 +308,25 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             </td>
         </tr>
         <tr style="vertical-align:top">
-            <td>Sustainability Manager (corporate)</td>
-            <td>
+            <td align="left">Sustainability Manager (corporate)</td>
+            <td align="left">
             He has no active role in Catena-X (e.g.: getting reports is a passive, not an active role in this sense).</br></br>
             He sets corporate goals and breaks them down for different sectors and functions in the company.</br></br>
             He gets input from the Sustainability Manager Product.
             </td>
-            <td>
+            <td align="left">
             The role exists in principle; it is rather the question of who will take it over (e.g., personal union with Management, or possibly Sust. Manager).</br></br>
             Thesis: an SME does CCF rather than PCF.
             </td>
-            <td>
+            <td align="left">
             He requires (aggregated) sustainability data.</br></br>
             He requires “high level” (standard) reports.
             </td>
-            <td>CX provides up-to-date and reliable sustainability data.</td>
+            <td align="left">CX provides up-to-date and reliable sustainability data.</td>
         </tr>
         <tr style="vertical-align:top">
-            <td>Salespeople</td>
-            <td>
+            <td align="left">Salespeople</td>
+            <td align="left">
             He is the central interface to the customer.</br></br>
             He is the owner of the customer quotation process.</br></br>
             He negotiates PCF targets with customers (→purchaser).</br></br>
@@ -335,31 +335,31 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             </td>
             <td>
             </td>
-            <td>
+            <td align="left">
             He needs sustainability data (e.g., PCF) of own products (parts / materials)</br></br>
             He requires tools for information or data exchange (with both internal partners and external customers).
             </td>
-            <td>
+            <td align="left">
             CX provides sustainability data of own products.</br></br>
             CX provides apps and services for data exchange.
         </tr>
         <tr style="vertical-align:top">
-            <td>Auditor (external)</td>
-            <td>
+            <td align="left">Auditor (external)</td>
+            <td align="left">
             He does a yearly audit of conformity with Catena-X methodology.</br></br>
             At the beginning (before go-live) there is a one-time audit of the use of the Catena-X network and methods in the company to be audited.</br></br>
             The onboarding of suppliers requires a self-declaration of applying Catena-X methodology.</br></br>
             The auditor has a clearing role in case of escalated incidents.
             </td>
             <td></td>
-            <td>He needs additional information and data to be able to verify the reported PCF data.</td>
+            <td align="left">He needs additional information and data to be able to verify the reported PCF data.</td>
             <td>
             CX provides up-to-date and verifiable sustainability data.</br></br>
             Catena-X provides access to metadata that allows the reported PCF data to be verified.
         </tr>
         <tr style="vertical-align:top">
-            <td>Sustainability Associations / Institutions</td>
-            <td>They provide industry-specific averages and benchmarks of PCF values.</td>
+            <td align="left">Sustainability Associations / Institutions</td>
+            <td align="left">They provide industry-specific averages and benchmarks of PCF values.</td>
             <td></td>
             <td></td>
             <td></td>
