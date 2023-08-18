@@ -2,7 +2,15 @@
 titel: Adaoption View
 ---
 
-## Introduction 
+## Introduction
+
+Sustainability has become increasingly important in the automotive industry in recent years. In particular, the topic of CO2 emissions is the focus of interest, and the product-specific CO2 footprint (PCF: product carbon footprint) has developed into a key indicator for sustainable product design and supply chains. Accordingly, there is a need to determine this data as precisely as possible across the automotive supply chain and to exchange it among partners in the network. This requires appropriate standards for calculation and exchange of data.
+
+In this context, Catena-X offers a decentralized ecosystem supported by standards and principles like data sovereignty, which can effectively implement such a PCF data exchange. The PCF KIT will be the key enabler for various stakeholders to calculate and exchange PCF data in a standardized format. The objective of the PCF KIT is therefore to:
+
+- Provide a comprehensive overview about the methods and tools for a PCF data exchange in the Catena-X dataspace.
+- Offer various standards and guidelines for industry stakeholders.
+- Provide a detailed description of the essential components required.
 
 ## Vision & Mission
 
@@ -72,7 +80,7 @@ However, it is important that a PCF value reported from a supplier to its custom
 - indirect emissions from purchased energy ("Scope 2")
 - upstream emissions caused by purchased products from the upstream supply chain ("Scope 3")
 
-![Scope of Catena-X Use Case](::/../../resources/adoption-view/ScopeofCatena-XUseCase.png)
+![Scope of Catena-X Use Case](../resources/adoption-view/ScopeofCatena-XUseCase.png)
 
 The data for direct and indirect emissions will usually come from internal data sources, as these emission-shares are generated in the supplier's own production system. The upstream emissions ("Scope 3") can either be requested from the respective sub-supplier. Or it could be calculated, e.g., by using information from eco-databases.Putting all together, the transparency on the PCF for a given part or component is created through a cascade of top-to-bottom PCF requests, and a cascade of aggregated PCF data from bottom to top.
 
@@ -80,7 +88,7 @@ The data for direct and indirect emissions will usually come from internal data 
 
 This customer journey describes the exchange of PCF data in an asynchronous request/response process.
 
-![PCF Data Exchange Overview](::/../../resources/adoption-view/PCFDataExchangeOverview.png)
+![PCF Data Exchange Overview](../resources/adoption-view/PCFDataExchangeOverview.png)
 
 PCF data is exchanged between a data consumer (e.g., supplier on tier n) and a data provider (e.g., supplier on tier n+1). It is basically an asynchronous request/response process that is started by the data consumer:
 

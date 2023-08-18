@@ -214,7 +214,7 @@ As Release 3.2 only covers the "happy path" for exchange pcf data via the catena
 * [CX-0049-DID Document Schema](NeedtobeaddedbyAccociation)
 * [CX-0050-Framework Agreement Credential](NeedtobeaddedbyAccociation)
 * [CX-0051-Summary Credential](NeedtobeaddedbyAccociation)
-* [CX-0095 Data Model Transmission Pass]((https://catena-x.net/de/standard-library))
+
 
 ## Other Standards
 
