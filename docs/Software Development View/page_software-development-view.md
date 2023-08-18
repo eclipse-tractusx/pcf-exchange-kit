@@ -1,7 +1,10 @@
 ---
-titel:
-id:
+id: Specification
+title: Specification
+description: ''
+sidebar_position: 1
 ---
+
 # Developer View
 
 ## Introduction
@@ -226,7 +229,7 @@ As Release 3.2 only covers the "happy path" for exchange pcf data via the catena
 
 ## Other Standards
 
-* [Pathfinder Framework](https://wbcsd.github.io/data-exchange-protocol/v2/)
+- [Pathfinder Framework](https://wbcsd.github.io/data-exchange-protocol/v2/)
 
 ## NOTICE
 

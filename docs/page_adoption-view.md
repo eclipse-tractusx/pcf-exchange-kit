@@ -1,5 +1,8 @@
 ---
-titel: Adaoption View
+id: Adoption View
+title: Adoption View
+description: 'PCF-Exchange-KIT'
+sidebar_position: 2
 ---
 
 ## Introduction
