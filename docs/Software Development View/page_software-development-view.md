@@ -1,3 +1,7 @@
+---
+titel:
+id:
+---
 # Developer View
 
 ## Introduction
@@ -11,6 +15,8 @@ This Kit covers various aspects, starting from how utilizing the available API E
 
 The following figure shows the current high level architecture of the use case pcf exchange. It is build on an asyncronous data exchange.
 
+<!--![Diagram Image Link](./puml/level_1_system_view.puml)-->
+
 ![Bulding Block View](../../resources/development-view/BuildingblockView.png)
 
 ## Sequence View
@@ -21,13 +27,16 @@ The following chapter illustrates the process from searching for an EDC point, t
 
 For receiving the EDC Enpoints for a requested partner the EDC Discovery Service is used following the [CX-0001](test) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more detailes the used CX Standard is linkend.
 
-![EDCDiscoveryAndDTRAccess](../../resources/development-view/EDCDiscoveryAndDTRAccess.png)
+![EDCDiscoveryAndDTRAccess](../../resources/development-view/PCFUpdatepushthroughEDC.png)
+
 
 ### PCF Request
 
 After successfully locating the EDC asset containing the PCF request endpoint, the query for a PCF dataset can be initiated, as illustrated in the attached sequence diagram.
 
-![PCF Request](../../resources/development-view/PCFRequest.png)
+![PCF Request](../../resources/development-view/PCFRequestthroughAAS.png)
+
+
 
 >**Note**
 > The API Wrapper shown in the squence diagrams is optional. The management API of the EDC can also be used directly.
@@ -36,18 +45,19 @@ After successfully locating the EDC asset containing the PCF request endpoint, t
 
 The sequence diagram provided below presents an example of a PCF update flow. An update is feasible only for assets that have been previously requested at least once, as demonstrated in [PCFRequest](#sequence-view). Proactive updates without a prior request are not achievable with the current version.
 
-![PCF Update](../../resources/development-view/PCFUpdate.png)
+![PCF Update](../../resources/development-view/PCFUpdatepushthroughEDC.png)
 
 #### API Calls
 | Call   | Method | Path| Param|
 | ------ | ------ | -------------------------------------------------- | ------------------------------------------ |
-| [001] (Look up EDC Enpoints) | POST  | /api/administration/connectors/discovery/search   |    `{[<Company's BPNL>]}` |
-| [002] (Look up dDTR) | N/A   | Lookup Asset in catalog (EDC asset type data.core.digital Twin Registry) |                         |
-| [003] (Lookup Twin ID)  |  GET | https://someEDCProxyURL/lookup/shells   |`assetIds= [ {"key":" manfactureId", "value":"<Company BPN>"}, {"key": "manfuacturePartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
-| [004] (Look Up PCF Submodel/EDC Asset ID) | GET    | https://someEDCProxyURL/registry/shell-discriptors/                                    | `{DIGITAL TWIN ID}`
+| [001] (Look up EDC Enpoints) | POST  | /api/administration/connectors/discovery/  | `[<Company's BPNL>]` |
+| [002] (Look up dDTR) | N/A   | Lookup Asset in catalog (EDC asset type data.core.digitalTwinRegistry) |                         |
+| [003] (Lookup Twin ID)  |  GET | /lookup/shells   |`assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
+| [004] (Look Up PCF Submodel/EDC Asset ID) | GET    | /registry/shell-discriptors/                                    | `{DIGITAL TWIN ID}`
 |[005] (Requesting PCF Value)|GET| /productIds|{productId}
 |006 (Sending PCF Value)| PUT| /productIds|{productId}
 
+- The assetIds under [003] must be base64 encoded!
 - When responding on PCF exchange request the "requestID" is mandatory in the PUT call.
 - When sharing a PCF update the "requestID" is NOT allowed in the PUT call.
 - The EDC asset used to receive PCF is NOT looked up through AAS, but identified by type ("data.pcf.exchangeEndpoint").
@@ -56,7 +66,7 @@ The sequence diagram provided below presents an example of a PCF update flow. An
 
 The following JSON shows the structure of a registered PCF submodel in the DTR. The subprotocolBody is used for asset bundling. For this, the CX Standard [CX-0002](https://catena-x.net/de/standard-library) is to be followed.
 
-The digital twin id can be searched via the `manufactureID`, `manufacturePartID` and the ``assetLifecyclePhase:"asPlanned"``
+The digital twin id can be searched via the, `manufacturerPartId` and the ``assetLifecyclePhase:"asPlanned"``
 The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
 
 ```json
@@ -94,16 +104,14 @@ The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
 
 ##### Payload for EDC Data Asset PCF
 
-The follwing JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundeling (see add chapter here)
+The follwing JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundeling mentioned under [Payload for Requesting PCF Sub Model](#api-calls)
 
 ```json
-
-  
 "@type": "edc:AssetEntryDto",
   "edc:asset": {
     "@id": "c34018ab-5820-4065-9087-416d78e1ab60",
     "edc:properties": {
-      "@type": "data.pcf.exchangeEndpoint",
+      "type": "data.pcf.exchangeEndpoint",
       "rdfs:label": "PCF Data",
       "rdfs:comment": "Endpoint for PCF data",
       "dcat:version": "0.0.3",
@@ -220,4 +228,16 @@ As Release 3.2 only covers the "happy path" for exchange pcf data via the catena
 
 * [Pathfinder Framework](https://wbcsd.github.io/data-exchange-protocol/v2/)
 
+## NOTICE
 
+This work is licensed under the [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/legalcode).
+
+- SPDX-License-Identifier: CC-BY-4.0
+- SPDX-FileCopyrightText: 2023,2023 ZF Friedrichshafen AG
+- SPDX-FileCopyrightText: 2023,2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+- SPDX-FileCopyrightText: 2023,2023 T-Systems International GmbH
+- SPDX-FileCopyrightText: 2023,2023 SAP SE
+- SPDX-FileCopyrightText: 2023,2023 SIEMENS AG
+- SPDX-FileCopyrightText: 2023,2023 SUPPLY ON AG
+- SPDX-FileCopyrightText: 2023,2023 Contributors to the Eclipse Foundation
+- Source URL: https://github.com/eclipse-tractusx/pcf-exchange-kit
