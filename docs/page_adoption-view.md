@@ -66,7 +66,7 @@ To describe the process, we defined two customer journeys:
 
 The exchange-process is initiated top-down (e.g., at the OEM; but it can also start at any level of the supply chain), starting with a request of a customer to the supplier. It could then be continued step by step throughout the entire tier-n supply chain. Ideally, the entire supply chain (or actually: the entire supply tree) would be covered via this cascading request/response process. The result would be a PCF that is 100% based on requested and reported data.
 
-![PCF Request and Response](::/../../resources/adoption-view/PCFRequestandResponse.png)
+![PCF Request and Response](../resources/adoption-view/PCFRequestandResponse.png)
 
 In the real world, this will not be implemented this way, at least in the short and medium term. It can be assumed that this process and information chain will break down at certain points in the supply chain. There, data is not requested, but is calculated using secondary data, as is standard procedure these days. There can be various reasons for this:
 
