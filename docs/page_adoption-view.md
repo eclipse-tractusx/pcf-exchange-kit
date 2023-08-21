@@ -75,7 +75,6 @@ In the real world, this will not be implemented this way, at least in the short 
 
 - The affected part of the supply chain is only of minor relevance to the PCF; the effort required to determine the real data would therefore not be worthwhile.
 - The supplier cannot or does not want to provide corresponding data.
-- …
 
 However, it is important that a PCF value reported from a supplier to its customer always represents the entire supply chain behind it. Therefore, the following data is recorded in a PCF calculation and aggregated to form the resulting PCF:
 
@@ -85,7 +84,7 @@ However, it is important that a PCF value reported from a supplier to its custom
 
 ![Scope of Catena-X Use Case](../resources/adoption-view/ScopeofCatena-XUseCase.png)
 
-The data for direct and indirect emissions will usually come from internal data sources, as these emission-shares are generated in the supplier's own production system. The upstream emissions ("Scope 3") can either be requested from the respective sub-supplier. Or it could be calculated, e.g., by using information from eco-databases.Putting all together, the transparency on the PCF for a given part or component is created through a cascade of top-to-bottom PCF requests, and a cascade of aggregated PCF data from bottom to top.
+The data for direct and indirect emissions will usually come from internal data sources, as these emission-shares are generated in the supplier's own production system. The upstream emissions ("Scope 3") can either be requested from the respective sub-supplier. Or it could be calculated, e.g., by using information from eco-databases. Putting all together, the transparency on the PCF for a given part or component is created through a cascade of top-to-bottom PCF requests, and a cascade of aggregated PCF data from bottom to top.
 
 ### Customer Journey "PCF Data Exchange"
 
@@ -96,15 +95,15 @@ This customer journey describes the exchange of PCF data in an asynchronous requ
 PCF data is exchanged between a data consumer (e.g., supplier on tier n) and a data provider (e.g., supplier on tier n+1). It is basically an asynchronous request/response process that is started by the data consumer:
 
 1. The data consumer realizes that he needs the PCF for a specific component and that this data is not available in his local data (or is not of sufficient quality).
-2. With his PCF Data exchange tool, the data consumer checks whether the required PCF data is available via Catena-X (from a technical perspective, this means that there is already a digital twin for the component and that he PCF submodel is available for this twin). If so, the tool would “fetch up” this data. If not, the user can request this data from the supplier as described in the next steps.
-3. The data consumer submits a “PCF request” (according to the standardized API <Link einfügen>) to his supplier. In doing so, he asks the supplier to provide PCF data for the specific component, which was determined in accordance with the requirements of the Catena-X PCF Rulebook.
+2. With his PCF Data exchange tool, the data consumer checks whether the required PCF data is available via Catena-X (from a technical perspective, this means that there is already a digital twin for the component and that the PCF submodel is available for this twin). If so, the tool would “fetch up” this data. If not, the user can request this data from the supplier as described in the next steps.
+3. The data consumer submits a “PCF request” (according to the standardized API [CX-0028](https://catena-x.net/de/standard-library)) to his supplier. In doing so, he asks the supplier to provide PCF data for the specific component, which was determined in accordance with the requirements of the Catena-X PCF Rulebook.
 
 With this request, the process temporarily ends for the data consumer. The ball is now in the data provider's playing field.:
 
 4. The data provider receives the PCF request (message/display in his PCF data exchange tool). To answer this request, he takes the following steps:
 5. The data provider checks whether the requested data is already available (i.e., whether the PCF has already calculated in the past but has not yet been provided to the customer).
-6. If the data is not yet available, the data provider must create it first. At this point, he starts the “PCF calculation” subjourney (see below). At the end of this subjourney, the PCF data is available, and the provider can answer the original request with the next steps.
-7. The data provider sends a PCF Response (according to the standardized API see [Development View](../docs/Software%20Development%20View/pcf-echange-api/)) to the data consumer. At the same time, the data is made available in Catena-X (which means from a technical perspective, that a PCF submodel is attached to the corresponding digital twin of the component).
+6. If the data is not yet available, the data provider must create it first. At this point, he starts the “PCF calculation” subjourney (see [below](#customer-journey-pcf-calculation)). At the end of this subjourney, the PCF data is available, and the provider can answer the original request with the next steps.
+7. The data provider sends a PCF Response (according to the standardized API see [CX-0028](https://catena-x.net/de/standard-library)) to the data consumer. At the same time, the data is made available in Catena-X (which means from a technical perspective, that a PCF submodel is attached to the corresponding digital twin of the component).
 
 For the data provider, the process is now over, and the consumer's request has been answered with the response. Now follow a few more steps on the consumer side.
 
@@ -123,7 +122,7 @@ This customer journey describes the calculation of a CX Rulebook-compliant PCF, 
 
 ![PCF Calculation](../resources/adoption-view/PCFCalculation.png)
 
-The calculation process will often be triggered by an incoming PCF request (see subjourney "PCF data exchange", step 6). But of course, a PCF calculation can also be carried out proactively without a corresponding request via PCF Request.
+The calculation process will often be triggered by an incoming PCF request (see subjourney "[PCF data exchange](#customer-journey-pcf-data-exchange)", step 6). But of course, a PCF calculation can also be carried out proactively without a corresponding request via PCF Request.
 To determine a PCF, an appropriate calculation tool is usually used, which guides the user through the process and ensures that all relevant data is taken into account. We will limit ourselves here to a generic, tool-independent presentation of the most important steps.
 
 1. Make a plan: What are the different components of the PCF? Where can I get the relevant data from?
@@ -133,7 +132,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
 3. Put the indirect emissions from purchased energy into the calculation.
 → Get the raw data (consumption values, energy mix, …) from internal data sources and from the energy supplier, and enter it in the calculation tool.
 4. Upstream emissions:
-    1. For sub-components with a (expected) relevant share on the PCF, the aim is to use real data (or primary data) for the calculation. Therefore, a PCF request is sent to the suppliers of these sub-components, to obtain appropriate real data (see subjourney "PCF data exchange"). As soon as the data is available (via a PCF Response), it can be used as input for the calculation.
+    1. For sub-components with a (expected) relevant share on the PCF, the aim is to use real data (or primary data) for the calculation. Therefore, a PCF request is sent to the suppliers of these sub-components, to obtain appropriate real data (see subjourney ["PCF data exchange"](#customer-journey-pcf-data-exchange)). As soon as the data is available (via a PCF Response), it can be used as input for the calculation.
     2. For other sub-components, which only make up a small proportion of the upstream emissions, there will be no request of data to the supplier. Instead, the data will be obtained from a database for secondary data.
 5. If necessary, put other emissions and further data into the calculation (e.g., transport emissions, waste, recycling quotas, ...).
 6. Put it all together and get the overall PCF.
@@ -252,7 +251,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             Internal View:
                 <ul>
                     <li>He is the PCF data owner in the company.</li>
-                    <li>He acts as a PCF data collector</li>
+                    <li>He acts as a PCF data collector.</li>
                     <li>He receives PCF targets from the Sustainability Manager, evaluates them, and is consulted as a CO2 expert in negotiations.</li>
                     <li>He tracks PCF targets for purchased parts, and detects incidents in terms of non-fulfillment of targets.</li>
                     <li>He makes supplier performance reviews about PCF.</li>
@@ -270,7 +269,7 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             <td align="left">
             CX defines standards for PCF data.</br></br>
             CX provides apps and services for PCF data exchange.</br></br>
-            CX provides up-to-date and reliable PCF data of parts / materials</br></br>
+            CX provides up-to-date and reliable PCF data of parts / materials.</br></br>
             CX provides phase-specific data.
             </td>
         </tr>
@@ -289,12 +288,12 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
             <td>
             </td>
             <td align="left">
-            He collaborates with external auditors</br></br>
-            He requires standardized data</br></br>
+            He collaborates with external auditors.</br></br>
+            He requires standardized data.</br></br>
             He needs data in different phases of the product lifecycle (e.g., in product development, sourcing, industrialization, series production).</br></br>
             He needs reports for tracking and monitoring of sustainability data.</br><br>
             He needs a tool to exchange sustainability data with internal and external partners.</br></br>
-            He needs tools for: 
+            He needs tools for:
                 <ul>
                     <li>PCF target breakdown.</li>
                     <li>PCF optimization (e.g., “what if analysis”).</li>
@@ -369,16 +368,15 @@ To determine a PCF, an appropriate calculation tool is usually used, which guide
     </tbody>
 </table>
 
-
 ## Semantic Models
 
-Depending on the use case and related KIT, Catena-X provides different semantic models that help to structure and make use of data via semantic information. These models help to provide a basic meaning to the data and their relationship, thereby enabling interoperability between data sets. Catena-X data models rely on principles as understandability, standardization, accuracy, differentiation, auditability, comprehensiveness, and provision of insights to drive improvement actions.
+Depending on the use case and related KIT, Catena-X provides different semantic models that help to structure and make use of data via semantic information. These models help to provide a basic meaning to the data and their relationship, thereby enabling interoperability between data sets. Catena-X data models rely on principles as understandability, standardization, accuracy, differentiation, audibility, comprehensiveness, and provision of insights to drive improvement actions.
 
 ### PCF
 
-#### Introduction
+#### Introduction PCF Data Model
 
-In an era defined by growing environmental consciousness and sustainability imperatives, the concept of measuring and reducing carbon footprints has become paramount across industries. A pivotal key in this pursuit is a alligned and standardized Product Carbon Footprint Data Model. This data model not only facilitates the systematic calculation and comparison of carbon footprints but also offers a structured approach to managing environmental impact data.
+In an era defined by growing environmental consciousness and sustainability imperatives, the concept of measuring and reducing carbon footprints has become paramount across industries. A pivotal key in this pursuit is a aligned and standardized Product Carbon Footprint Data Model. This data model not only facilitates the systematic calculation and comparison of carbon footprints but also offers a structured approach to managing environmental impact data.
 
 As the global community grapples with the impacts of climate change, consumers, businesses, and governments are seeking actionable ways to mitigate their carbon emissions. The need for a consistent and universally accepted method of quantifying these emissions from diverse products has given rise to the significance of a Standardized Product Carbon Footprint Data Model. This model acts as a lingua franca, enabling stakeholders to communicate and analyze carbon footprint information transparently and comprehensively.
 

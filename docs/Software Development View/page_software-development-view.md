@@ -1,26 +1,22 @@
 ---
 id: Specification
 title: Specification
-description: ''
+description: 'PCF-Exchange-KIT'
 sidebar_position: 1
 ---
 
-# Developer View
-
 ## Introduction
 
-The developer view provides a detailed guide on how to utilize the PCF exchange KIT effectivly. Developer will learn how to integrate the kit into there applications and make use of the feature of exchanging pcf values via the Catena-X network.
+The developer view provides a detailed guide on how to utilize the PCF exchange KIT effectively. Developer will learn how to integrate the kit into there applications and make use of the feature of exchanging pcf values via the Catena-X network.
 IT-Administrators will learn how they need to provide pcf data and which components are needed therefore.
 
 This Kit covers various aspects, starting from how utilizing the available API Endpoints to used data models and how to make them available to the catena-x network.
 
 ## Building Block View
 
-The following figure shows the current high level architecture of the use case pcf exchange. It is build on an asyncronous data exchange.
+The following figure shows the current high level architecture of the use case pcf exchange. It is build on an asynchronous data exchange.
 
-<!--![Diagram Image Link](./puml/level_1_system_view.puml)-->
-
-![Bulding Block View](../../resources/development-view/BuildingblockView.png)
+![Building Block View](../../resources/development-view/BuildingblockView.png)
 
 ## Sequence View
 
@@ -28,21 +24,19 @@ The following chapter illustrates the process from searching for an EDC point, t
 
 ### EDC Discovery and dDTR Access
 
-For receiving the EDC Enpoints for a requested partner the EDC Discovery Service is used following the [CX-0001](test) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more detailes the used CX Standard is linkend.
+For receiving the EDC Endpoints for a requested partner the EDC Discovery Service is used following the [CX-0001](test) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more details the used CX Standard is linked.
 
 ![EDCDiscoveryAndDTRAccess](../../resources/development-view/PCFUpdatepushthroughEDC.png)
 
-
 ### PCF Request
 
-After successfully locating the EDC asset containing the PCF request endpoint, the query for a PCF dataset can be initiated, as illustrated in the attached sequence diagram.
+To actual request pcf values via the pcf api endpoint first of all the EDC pcf asset needs to be identified. Therefore the decentralized Digital Twin Registry (dDTR) is used. Data provider must register their dDTR(s) as EDC assets following the CX-0002 standard. After identifying the dDTR the Digital Twin with the related pcf submodel can be searched (see [API calls [0003 +0004]](#api-calls)). An example are documented [here](#payload-for-requesting-pcf-sub-model).
+After successfully locating the EDC asset containing the PCF request endpoint (Example Payload can be found [here](#payload-for-edc-data-asset-pcf)), the query for a PCF dataset can be initiated, as illustrated in the attached sequence diagram.
 
 ![PCF Request](../../resources/development-view/PCFRequestthroughAAS.png)
 
-
-
 >**Note**
-> The API Wrapper shown in the squence diagrams is optional. The management API of the EDC can also be used directly.
+> The API Wrapper shown in the sequence diagrams is optional. The management API of the EDC can also be used directly.
 
 ### PCF Update
 
@@ -51,12 +45,13 @@ The sequence diagram provided below presents an example of a PCF update flow. An
 ![PCF Update](../../resources/development-view/PCFUpdatepushthroughEDC.png)
 
 #### API Calls
+
 | Call   | Method | Path| Param|
 | ------ | ------ | -------------------------------------------------- | ------------------------------------------ |
-| [001] (Look up EDC Enpoints) | POST  | /api/administration/connectors/discovery/  | `[<Company's BPNL>]` |
+| [001] (Look up EDC Endpoints) | POST  | /api/administration/connectors/discovery/  | `[<Company's BPNL>]` |
 | [002] (Look up dDTR) | N/A   | Lookup Asset in catalog (EDC asset type data.core.digitalTwinRegistry) |                         |
 | [003] (Lookup Twin ID)  |  GET | /lookup/shells   |`assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
-| [004] (Look Up PCF Submodel/EDC Asset ID) | GET    | /registry/shell-discriptors/                                    | `{DIGITAL TWIN ID}`
+| [004] (Look Up PCF Submodel/EDC Asset ID) | GET    | /registry/shell-descriptors/                                    | `{DIGITAL TWIN ID}`
 |[005] (Requesting PCF Value)|GET| /productIds|{productId}
 |006 (Sending PCF Value)| PUT| /productIds|{productId}
 
@@ -107,7 +102,7 @@ The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
 
 ##### Payload for EDC Data Asset PCF
 
-The follwing JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundeling mentioned under [Payload for Requesting PCF Sub Model](#api-calls)
+The following JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundling mentioned under [Payload for Requesting PCF Sub Model](#api-calls)
 
 ```json
 "@type": "edc:AssetEntryDto",
@@ -138,7 +133,7 @@ The follwing JSON shows the the EDC Asset for PCF defined in the EDC using the a
 
 #### Payload for EDC Policy
 
-The following JSON is an policy definition including the policy "frameworkagreement pcf" and membership:
+The following JSON is an policy definition including the policy "frameworkagreement pcf" and membership. The [frameworkagreement document](https://catena-x.net/fileadmin/user_upload/04_Einfuehren_und_umsetzen/Governance_Framework/Catena-X_UseCasePCFExchange_Beta-Phase_DE.pdf) is published via the association and are available via the catena-x homepage. The membership credential is automatically created after finishing successfully the onboarding process.
 
 ##### Payload to create a SSI based Policy
 
@@ -183,6 +178,8 @@ The following JSON is an policy definition including the policy "frameworkagreem
 
 ```
 
+For more examples how to define policies with SSI have a look [here](https://github.com/eclipse-tractusx/ssi-docu/blob/main/docs/architecture/cx-3-2/edc/policy.definitions.md).
+
 #### Payload Contract Definition
 
 ```json
@@ -201,8 +198,6 @@ The following JSON is an policy definition including the policy "frameworkagreem
 }
 ```
 
-For more examples how to define polcies with SSI have a look [here](https://github.com/eclipse-tractusx/ssi-docu/blob/main/docs/architecture/cx-3-2/edc/policy.definitions.md).
-
 ## Error Handling
 
 As Release 3.2 only covers the "happy path" for exchange pcf data via the catena-x network. Error handling is currently not covered.
@@ -211,21 +206,20 @@ As Release 3.2 only covers the "happy path" for exchange pcf data via the catena
 
 ### Used CX Standards
 
-* [CX-0001-EDCDiscoveryAPI](https://catena-x.net/de/standard-library)
-* [CX-0002-DigitalTwininsInCX](https://catena-x.net/de/standard-library)
-* [CX-0003-SAMMSemanticAspectMetaModel](https://catena-x.net/de/standard-library)
-* [CX-0006-RegistrationAndInitialOnBoarding](https://catena-x.net/de/standard-library)
-* [CX-0013 Identity of Member Companies](https://catena-x.net/de/standard-library)
-* [CX-0014 Employees and Technical Users](https://catena-x.net/de/standard-library)
-* [CX-0015 IAM & Access Control Paradigm](https://catena-x.net/de/standard-library)
-* [CX-0016 Company Attribute Verification](https://catena-x.net/de/standard-library)
-* [CX-0017 Company Role by the Connector](https://catena-x.net/de/standard-library)
-* [CX-0018-SovereignDataExchange](https://catena-x.net/de/standard-library)
-* [CX-0026-PCF Data Model](https://catena-x.net/de/standard-library)
-* [CX-0049-DID Document Schema](NeedtobeaddedbyAccociation)
-* [CX-0050-Framework Agreement Credential](NeedtobeaddedbyAccociation)
-* [CX-0051-Summary Credential](NeedtobeaddedbyAccociation)
-
+- [CX-0001-EDCDiscoveryAPI](https://catena-x.net/de/standard-library)
+- [CX-0002-DigitalTwinsInCX](https://catena-x.net/de/standard-library)
+- [CX-0003-SAMMSemanticAspectMetaModel](https://catena-x.net/de/standard-library)
+- [CX-0006-RegistrationAndInitialOnBoarding](https://catena-x.net/de/standard-library)
+- [CX-0013 Identity of Member Companies](https://catena-x.net/de/standard-library)
+- [CX-0014 Employees and Technical Users](https://catena-x.net/de/standard-library)
+- [CX-0015 IAM & Access Control Paradigm](https://catena-x.net/de/standard-library)
+- [CX-0016 Company Attribute Verification](https://catena-x.net/de/standard-library)
+- [CX-0017 Company Role by the Connector](https://catena-x.net/de/standard-library)
+- [CX-0018-SovereignDataExchange](https://catena-x.net/de/standard-library)
+- [CX-0026-PCF Data Model](https://catena-x.net/de/standard-library)
+- [CX-0049-DID Document Schema](NeedtobeaddedbyAccociation)
+- [CX-0050-Framework Agreement Credential](NeedtobeaddedbyAccociation)
+- [CX-0051-Summary Credential](NeedtobeaddedbyAccociation)
 
 ## Other Standards
 
@@ -243,4 +237,4 @@ This work is licensed under the [CC-BY-4.0](https://creativecommons.org/licenses
 - SPDX-FileCopyrightText: 2023,2023 SIEMENS AG
 - SPDX-FileCopyrightText: 2023,2023 SUPPLY ON AG
 - SPDX-FileCopyrightText: 2023,2023 Contributors to the Eclipse Foundation
-- Source URL: https://github.com/eclipse-tractusx/pcf-exchange-kit
+- Source URL: [Tractus X](https://github.com/eclipse-tractusx/pcf-exchange-kit)
