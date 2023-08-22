@@ -48,10 +48,10 @@ The sequence diagram provided below presents an example of a PCF update flow. An
 
 | Call   | Method | Path| Param|
 | ------ | ------ | -------------------------------------------------- | ------------------------------------------ |
-| [001] (Look up EDC Endpoints) | POST  | /api/administration/connectors/discovery/  | `[<Company's BPNL>]` |
-| [002] (Look up dDTR) | N/A   | Lookup Asset in catalog (EDC asset type data.core.digitalTwinRegistry) |                         |
-| [003] (Lookup Twin ID)  |  GET | /lookup/shells   |`assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
-| [004] (Look Up PCF Submodel/EDC Asset ID) | GET    | /registry/shell-descriptors/                                    | `{DIGITAL TWIN ID}`
+| [001](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20EDC%20Discovery/post-list-of-bpns-or-an-empty-array-to-retrieve-available-company-connector-authorization-required-roles-view-connectors) (Look up EDC Endpoints) | POST  | /api/administration/Connectors/discovery/  | `[<Company's BPNL>]` |
+| [002](https://eclipse-tractusx.github.io/docs-kits/next/kits/tractusx-edc/docs/samples/management-api-v2-walkthrough/catalog) (Look up dDTR) | POST  | /v2/catalog/request-->Lookup Asset in the EDC catalog (EDC asset type data.core.digitalTwinRegistry) |                         |
+| [003](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Discovery/get-all-asset-administration-shell-ids-by-asset-link) (Lookup Twin ID)  |  GET | /lookup/shells   |`assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
+| [004](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Registry/get-all-asset-administration-shell-descriptors) (Look Up PCF Submodel/EDC Asset ID) | GET    | /shell-descriptors                                    | `{DIGITAL TWIN ID}`
 |[005] (Requesting PCF Value)|GET| /productIds|{productId}
 |006 (Sending PCF Value)| PUT| /productIds|{productId}
 
@@ -102,25 +102,25 @@ The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
 
 ##### Payload for EDC Data Asset PCF
 
-The following JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundling mentioned under [Payload for Requesting PCF Sub Model](#api-calls)
+The following JSON shows the the EDC Asset for PCF defined in the EDC using the asset bundling mentioned under [Payload for Requesting PCF Sub Model](#api-calls).
 
 ```json
-"@type": "edc:AssetEntryDto",
+  "@type": "edc:AssetEntryDto",
   "edc:asset": {
     "@id": "c34018ab-5820-4065-9087-416d78e1ab60",
     "edc:properties": {
-      "type": "data.pcf.exchangeEndpoint",
       "rdfs:label": "PCF Data",
       "rdfs:comment": "Endpoint for PCF data",
       "dcat:version": "0.0.3",
       "aas-semantics:semanticId": "urn:bamm:io.catenax.pcf:4.0.0#Pcf",
-      "edc:contentType": "application/json"
+      "edc:contentType": "application/json",
+      "edc:type": "data.pcf.exchangeEndpoint"
     },
     "edc:privateProperties": null,
      
   "edc:dataAddress": {
     "edc:type": "edc:HttpData",
-    "edc:baseUrl": "https://some.url/service",
+    "edc:baseUrl": https://some.url/service,
     "edc:proxyBody": "true",
     "edc:proxyPath": "true",
     "edc:proxyQueryParams": "true",
