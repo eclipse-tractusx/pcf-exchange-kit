@@ -1,10 +1,16 @@
 ---
-titel: PCF Exchange KIT Changelog
+id: PCF Exchange Kit Changelog
+title: Changelog
+description: 'PCF Exchange Kit'
+sidebar_position: 1
 ---
+## PCF Exchange KIT
+
+All notable changes to this Kit will be documented in this file.
 
 ## [0.0.x] - 2023-08-xx
 
-### Addded
+### Added
 
 - Initial Version
 - move KIT to Tractus-X repository

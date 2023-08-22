@@ -79,7 +79,7 @@ The sub-model PCF must be registered with the ``idshort: PCFExchangeEndpoint``.
     "identification": "urn:uuid:205cf8d1-8f07-483c-9c5b-c8d706c7d05d",
     "semanticId": {
         "value": [
-            "urn:bamm:io.catenax.pcf:4.0.1#Pcf"
+            "urn:bamm:io.catenax.pcf:4.0.0#Pcf"
         ]
     },
     "endpoints": [

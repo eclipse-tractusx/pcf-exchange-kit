@@ -380,7 +380,7 @@ In an era defined by growing environmental consciousness and sustainability impe
 
 As the global community grapples with the impacts of climate change, consumers, businesses, and governments are seeking actionable ways to mitigate their carbon emissions. The need for a consistent and universally accepted method of quantifying these emissions from diverse products has given rise to the significance of a Standardized Product Carbon Footprint Data Model. This model acts as a lingua franca, enabling stakeholders to communicate and analyze carbon footprint information transparently and comprehensively.
 
-For this KIT only the data model PCF is used. The data model follows the Catena-X Standard [CX-0026](test) and is modeled following the [CX0003](test) Standard.
+For this KIT only the data model PCF is used. The data model follows the Catena-X Standard [CX-0026](https://catena-x.net/de/standard-library) and is modeled following the [CX0003](https://catena-x.net/de/standard-library) Standard.
 
 #### Example Payload
 
