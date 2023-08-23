@@ -8,12 +8,11 @@ sidebar_position: 1
 
 All notable changes to this Kit will be documented in this file.
 
-## [0.0.9] - 2023-08-xx
+## [0.1.0] - 2023-08-23
 
 ### Added
 
-- Initial Version
-- move KIT to Tractus-X repository
+Initial Version of the PCF exchange KIT including adoption and development view incl. all relevant API specifications.
 
 ### Changed
 

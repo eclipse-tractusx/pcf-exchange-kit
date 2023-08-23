@@ -96,7 +96,7 @@ PCF data is exchanged between a data consumer (e.g., supplier on tier n) and a d
 
 1. The data consumer realizes that he needs the PCF for a specific component and that this data is not available in his local data (or is not of sufficient quality).
 2. With his PCF Data exchange tool, the data consumer checks whether the required PCF data is available via Catena-X (from a technical perspective, this means that there is already a digital twin for the component and that the PCF submodel is available for this twin). If so, the tool would “fetch up” this data. If not, the user can request this data from the supplier as described in the next steps.
-3. The data consumer submits a “PCF request” (according to the standardized API [CX-0028](https://catena-x.net/de/standard-library)) to his supplier. In doing so, he asks the supplier to provide PCF data for the specific component, which was determined in accordance with the requirements of the Catena-X PCF Rulebook.
+3. The data consumer submits a “PCF request” (according to the standardized API [CX-0028](https://catena-x.net/de/standard-library)) to his supplier. In doing so, he asks the supplier to provide PCF data for the specific component, which was determined in accordance with the requirements of the Catena-X PCF Rulebook ([CX-0029](https://catena-x.net/de/standard-library)).
 
 With this request, the process temporarily ends for the data consumer. The ball is now in the data provider's playing field.:
 
@@ -118,7 +118,7 @@ This ends this customer journey.
 
 ### Customer Journey “PCF Calculation”
 
-This customer journey describes the calculation of a CX Rulebook-compliant PCF, with some of the required data obtained via the Catena-X network.
+This customer journey describes the calculation of a [CX Rulebook-compliant PCF](https://catena-x.net/fileadmin/user_upload/Standard-Bibliothek/Archiv/Update_Standard_PDF_Feb._2023/1_Sustainability_v1.0/CX_-_0029_PCF_Rulebook_UseCaseSustainability_v_1.0.0.pdf), with some of the required data obtained via the Catena-X network.
 
 ![PCF Calculation](../resources/adoption-view/PCFCalculation.png)
 
@@ -380,7 +380,7 @@ In an era defined by growing environmental consciousness and sustainability impe
 
 As the global community grapples with the impacts of climate change, consumers, businesses, and governments are seeking actionable ways to mitigate their carbon emissions. The need for a consistent and universally accepted method of quantifying these emissions from diverse products has given rise to the significance of a Standardized Product Carbon Footprint Data Model. This model acts as a lingua franca, enabling stakeholders to communicate and analyze carbon footprint information transparently and comprehensively.
 
-For this KIT only the data model PCF is used. The data model follows the Catena-X Standard [CX-0026](https://catena-x.net/de/standard-library) and is modeled following the [CX0003](https://catena-x.net/de/standard-library) Standard.
+For this KIT only the data model PCF is used. The data model follows the Catena-X Standard [CX-0026](https://catena-x.net/de/standard-library) and is modeled following the [CX-0003](https://catena-x.net/de/standard-library) Standard.
 
 #### Example Payload
 

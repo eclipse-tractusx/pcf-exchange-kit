@@ -2,7 +2,7 @@
 id: Specification
 title: Specification
 description: 'PCF-Exchange-KIT'
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 ## Introduction
@@ -216,7 +216,8 @@ As Release 3.2 only covers the "happy path" for exchange pcf data via the catena
 - [CX-0016 Company Attribute Verification](https://catena-x.net/de/standard-library)
 - [CX-0017 Company Role by the Connector](https://catena-x.net/de/standard-library)
 - [CX-0018-SovereignDataExchange](https://catena-x.net/de/standard-library)
-- [CX-0026-PCF Data Model](https://catena-x.net/de/standard-library)
+- [CX-0026 PCF Data Model](https://catena-x.net/de/standard-library)
+- [CX-0029 Product Carbon Footprint Rulebook](https://catena-x.net/de/standard-library)
 - [CX-0049-DID Document Schema](NeedtobeaddedbyAccociation)
 - [CX-0050-Framework Agreement Credential](NeedtobeaddedbyAccociation)
 - [CX-0051-Summary Credential](NeedtobeaddedbyAccociation)
