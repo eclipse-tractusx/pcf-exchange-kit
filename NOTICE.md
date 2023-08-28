@@ -2,7 +2,7 @@
 
 This content is produced and maintained by the Eclipse Tractus-X project.
 
-- Project home: https://github.com/eclipse-tractusx/eco-pass-kit
+- Project home: https://github.com/eclipse-tractusx/pcf-exchange-kit
 
 See the AUTHORS file(s) distributed with this work for additional information regarding authorship.
 
@@ -28,7 +28,7 @@ SPDX-License-Identifier: Apache-2.0
 
 The project maintains the following source code repositories:
 
-- https://github.com/eclipse-tractusx/eco-pass-kit
+- https://github.com/eclipse-tractusx/pcf-exchange-kit
 
 ## Third-party Content
 

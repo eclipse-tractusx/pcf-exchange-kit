@@ -7,14 +7,14 @@ sidebar_position: 3
 
 ## Introduction
 
-The developer view provides a detailed guide on how to utilize the PCF exchange KIT effectively. Developer will learn how to integrate the kit into there applications and make use of the feature of exchanging pcf values via the Catena-X network.
-IT-Administrators will learn how they need to provide pcf data and which components are needed therefore.
+The developer view provides a detailed guide on how to utilize the PCF exchange KIT effectively. Developer will learn how to integrate the kit into there applications and make use of the feature of exchanging PCF values via the Catena-X network.
+IT-Administrators will learn how they need to provide PCF data and which components are needed therefore.
 
-This Kit covers various aspects, starting from how utilizing the available API Endpoints to used data models and how to make them available to the catena-x network.
+This Kit covers various aspects, starting from how utilize the available API Endpoints, the used data models and how to make them available to the Catena-X network.
 
 ## Building Block View
 
-The following figure shows the current high level architecture of the use case pcf exchange. It is build on an asynchronous data exchange.
+The following figure shows the current high level architecture of the use case PCF exchange. It is build on an asynchronous data exchange.
 
 ![Building Block View](../../resources/development-view/BuildingblockView.png)
 
@@ -24,13 +24,13 @@ The following chapter illustrates the process from searching for an EDC point, t
 
 ### EDC Discovery and dDTR Access
 
-For receiving the EDC Endpoints for a requested partner the EDC Discovery Service is used following the [CX-0001](test) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more details the used CX Standard is linked.
+For receiving the EDC Endpoints for a requested partner, the EDC Discovery Service is used, following the [CX-0001]([test](https://catena-x.net/de/standard-library)) Standard. For receiving endpoints, at least the BPN-L needs to be known to get the related endpoints. For more details the used Catena-X Standard is linked.
 
 ![EDCDiscoveryAndDTRAccess](../../resources/development-view/PCFUpdatepushthroughEDC.png)
 
 ### PCF Request
 
-To actual request pcf values via the pcf api endpoint first of all the EDC pcf asset needs to be identified. Therefore the decentralized Digital Twin Registry (dDTR) is used. Data provider must register their dDTR(s) as EDC assets following the CX-0002 standard. After identifying the dDTR the Digital Twin with the related pcf submodel can be searched (see [API calls [0003 +0004]](#api-calls)). An example are documented [here](#payload-for-requesting-pcf-sub-model).
+To actual request PCF values via the PCF API endpoint first of all the EDC PCF asset needs to be identified. Therefore the decentralized Digital Twin Registry (dDTR) is used. Data provider must register their dDTR(s) as EDC assets following the CX-0002 standard. After identifying the dDTR the Digital Twin with the related PCF submodel can be searched (see [API calls [0003 +0004]](#api-calls)). An example are documented [here](#payload-for-requesting-pcf-sub-model).
 After successfully locating the EDC asset containing the PCF request endpoint (Example Payload can be found [here](#payload-for-edc-data-asset-pcf)), the query for a PCF dataset can be initiated, as illustrated in the attached sequence diagram.
 
 ![PCF Request](../../resources/development-view/PCFRequestthroughAAS.png)
@@ -40,20 +40,20 @@ After successfully locating the EDC asset containing the PCF request endpoint (E
 
 ### PCF Update
 
-The sequence diagram provided below presents an example of a PCF update flow. An update is feasible only for assets that have been previously requested at least once, as demonstrated in [PCFRequest](#sequence-view). Proactive updates without a prior request are not achievable with the current version.
+The sequence diagram provided below presents an example of a PCF update flow. An update is feasible only for assets that have been previously requested at least once, as demonstrated in [PCF Request](#sequence-view). Proactive updates without a prior request are not achievable with the current version.
 
 ![PCF Update](../../resources/development-view/PCFUpdatepushthroughEDC.png)
 
 #### API Calls
 
-| Call   | Method | Path| Param|
-| ------ | ------ | -------------------------------------------------- | ------------------------------------------ |
-| [001](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20EDC%20Discovery/post-list-of-bpns-or-an-empty-array-to-retrieve-available-company-connector-authorization-required-roles-view-connectors) (Look up EDC Endpoints) | POST  | /api/administration/Connectors/discovery/  | `[<Company's BPNL>]` |
-| [002](https://eclipse-tractusx.github.io/docs-kits/next/kits/tractusx-edc/docs/samples/management-api-v2-walkthrough/catalog) (Look up dDTR) | POST  | /v2/catalog/request-->Lookup Asset in the EDC catalog (EDC asset type data.core.digitalTwinRegistry) |                         |
-| [003](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Discovery/get-all-asset-administration-shell-ids-by-asset-link) (Lookup Twin ID)  |  GET | /lookup/shells   |`assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]`                     |
-| [004](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Registry/get-all-asset-administration-shell-descriptors) (Look Up PCF Submodel/EDC Asset ID) | GET    | /shell-descriptors                                    | `{DIGITAL TWIN ID}`
-|[005] (Requesting PCF Value)|GET| /productIds|{productId}
-|006 (Sending PCF Value)| PUT| /productIds|{productId}
+| Call                                                                                                                                                                                                                                                                                    | Method | Path                                                                                                 | Param                                                                                                             |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| [001](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20EDC%20Discovery/post-list-of-bpns-or-an-empty-array-to-retrieve-available-company-connector-authorization-required-roles-view-connectors) (Look up EDC Endpoints) | POST   | /api/administration/Connectors/discovery/                                                            | `[<Company's BPNL>]`                                                                                              |
+| [002](https://eclipse-tractusx.github.io/docs-kits/next/kits/tractusx-edc/docs/samples/management-api-v2-walkthrough/catalog) (Look up dDTR)                                                                                                                                            | POST   | /v2/catalog/request-->Lookup Asset in the EDC catalog (EDC asset type data.core.digitalTwinRegistry) |                                                                                                                   |
+| [003](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Discovery/get-all-asset-administration-shell-ids-by-asset-link) (Lookup Twin ID)                                                                            | GET    | /lookup/shells                                                                                       | `assetIds= [{"key": "manufacturerPartId", "value":"mat345",{"key":"assetLifecyclePhase", "value": "AsPlanned"}}]` |
+| [004](https://eclipse-tractusx.github.io/docs-kits/next/kits/Digital%20Twin%20Kit/Software%20Development%20View/API%20AAS%20Registry/get-all-asset-administration-shell-descriptors) (Look Up PCF Submodel/EDC Asset ID)                                                                | GET    | /shell-descriptors                                                                                   | `{DIGITAL TWIN ID}`                                                                                               |
+| [005] (Requesting PCF Value)                                                                                                                                                                                                                                                            | GET    | /productIds                                                                                          | {productId}                                                                                                       |
+| 006 (Sending PCF Value)                                                                                                                                                                                                                                                                 | PUT    | /productIds                                                                                          | {productId}                                                                                                       |
 
 - The assetIds under [003] must be base64 encoded!
 - When responding on PCF exchange request the "requestID" is mandatory in the PUT call.
@@ -133,7 +133,7 @@ The following JSON shows the the EDC Asset for PCF defined in the EDC using the 
 
 #### Payload for EDC Policy
 
-The following JSON is an policy definition including the policy "frameworkagreement pcf" and membership. The [frameworkagreement document](https://catena-x.net/fileadmin/user_upload/04_Einfuehren_und_umsetzen/Governance_Framework/Catena-X_UseCasePCFExchange_Beta-Phase_DE.pdf) is published via the association and are available via the catena-x homepage. The membership credential is automatically created after finishing successfully the onboarding process.
+The following JSON is an policy definition including the policy "frameworkagreement pcf" and membership. The [frameworkagreement document](https://catena-x.net/fileadmin/user_upload/04_Einfuehren_und_umsetzen/Governance_Framework/Catena-X_UseCasePCFExchange_Beta-Phase_DE.pdf) is published via the association and are available via the Catena-X homepage. The membership credential is automatically created after finishing successfully the onboarding process.
 
 ##### Payload to create a SSI based Policy
 
@@ -200,7 +200,7 @@ For more examples how to define policies with SSI have a look [here](https://git
 
 ## Error Handling
 
-As Release 3.2 only covers the "happy path" for exchange pcf data via the catena-x network. Error handling is currently not covered.
+As Release 3.2 only covers the "happy path" for exchange PCF data via the Catena-X network. Error handling is currently not covered.
 
 ## Standards
 
