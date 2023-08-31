@@ -25,10 +25,7 @@ more.
 
 The project maintains the following source code repositories
 
-* https://github.com/eclipse/tractusx
-* https://github.com/eclipse-tractusx/sldt-semantic-hub
-* https://github.com/eclipse-tractusx/sldt-digital-twin-registry
-* https://github.com/eclipse-tractusx/portal-frontend
+* https://github.com/eclipse-tractusx/pcf-exchange-kit
 
 ## Eclipse Development Process
 
